@@ -11,5 +11,5 @@ public interface Home {
     boolean resultIsShown();
 
 
-
+    String getWarningMessageForInput();
 }

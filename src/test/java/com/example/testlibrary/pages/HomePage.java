@@ -4,7 +4,6 @@ import com.example.testlibrary.annotations.LazyComponent;
 import com.example.testlibrary.interfaces.Home;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -54,7 +53,14 @@ public class HomePage extends BasePage implements Home {
 
     @Override
     public boolean resultIsShown() {
+       browser.waitUntil(ExpectedConditions.visibilityOf(result));
        return browser.isDisplayed(result) && browser.readText(result).contains("The factorial of");
+    }
+
+    @Override
+    public String getWarningMessageForInput() {
+        browser.waitUntil(ExpectedConditions.visibilityOf(result));
+        return browser.readText(result);
     }
 
     public String getResultNumbers (int i) {

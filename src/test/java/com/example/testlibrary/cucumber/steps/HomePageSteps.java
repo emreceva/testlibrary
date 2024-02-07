@@ -2,6 +2,7 @@ package com.example.testlibrary.cucumber.steps;
 
 import com.example.testlibrary.annotations.LazyAutowired;
 import com.example.testlibrary.context.ScenarioRunContext;
+import com.example.testlibrary.errors.ResultWarning;
 import com.example.testlibrary.pages.HomePage;
 import com.google.common.math.BigIntegerMath;
 import io.cucumber.java.en.And;
@@ -10,8 +11,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.math.BigInteger;
 
 public class HomePageSteps {
 
@@ -55,5 +54,15 @@ public class HomePageSteps {
         Assertions.assertEquals(number,actualNumber);
         Assertions.assertEquals(expectedResult,actualResult);
 
+    }
+
+    @Then("Verify the factorial result should not be shown on the Home Page")
+    public void verifyTheFactorialResultShouldNotBeShownOnTheHomePage() {
+        Assertions.assertFalse(homePage.resultIsShown());
+    }
+
+    @Then("Verify the warning message in result on the Home Page")
+    public void verifyTheWarningMessageInResultOnTheHomePage() {
+        Assertions.assertEquals(ResultWarning.NON_DIGIT_ERROR.getError(), homePage.getWarningMessageForInput());
     }
 }
