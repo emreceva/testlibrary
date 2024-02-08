@@ -19,7 +19,7 @@ Easily extensible and customizable for specific project requirements.
 
 Prerequisites
 Before running the tests using this framework, ensure you have the following prerequisites installed:
-Java 17
+Java 21
 Maven 3.x
 Selenium WebDriver 4.x
 Cucumber 7.x
@@ -30,8 +30,7 @@ JUnit 5.x
 Getting Started
 Clone this repository to your local machine:
 https://github.com/emreceva/testlibrary.git
-
-Copy code
+Git Clone Command
 git clone <https://github.com/emreceva/testlibrary.git>
 
 Navigate to the project directory:

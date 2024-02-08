@@ -14,16 +14,16 @@
 	<name>testlibrary</name>
 	<description>test library in spring boot</description>
 	<properties>
-		<maven.complier.source>17</maven.complier.source>
-		<maven.complier.target>17</maven.complier.target>
+		<maven.complier.source>21</maven.complier.source>
+		<maven.complier.target>21</maven.complier.target>
 		<maven.surefire.version>3.0.0-M8</maven.surefire.version>
-		<java.version>17</java.version>
+		<java.version>21</java.version>
 		<selenium.version>4.11.0</selenium.version>
 		<junit.jupiter.version>5.9.2</junit.jupiter.version>
 		<junit.platform.version>1.9.2</junit.platform.version>
 		<cucumber.version>7.15.0</cucumber.version>
 		<testng.version>7.7.1</testng.version>
-		<lombok.version>1.18.24</lombok.version>
+		<lombok.version>1.18.30</lombok.version>
 		<ashot.version>1.5.4</ashot.version>
 		<allure.version>2.25.0</allure.version>
 
