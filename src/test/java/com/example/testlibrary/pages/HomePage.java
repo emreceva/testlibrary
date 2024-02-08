@@ -4,16 +4,10 @@ import com.example.testlibrary.annotations.LazyComponent;
 import com.example.testlibrary.interfaces.Home;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.beans.factory.annotation.Value;
-
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 @LazyComponent
 public class HomePage extends BasePage implements Home {
