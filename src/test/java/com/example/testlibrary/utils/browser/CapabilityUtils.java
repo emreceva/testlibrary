@@ -1,14 +1,11 @@
 package com.example.testlibrary.utils.browser;
 
 import com.example.testlibrary.context.ScenarioRunContext;
-import io.cucumber.java.bs.A;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
-import java.util.HashMap;
 
 
 @Component
@@ -24,15 +21,6 @@ public class CapabilityUtils {
     private ScenarioRunContext scenarioRunContext;
 
     private DesiredCapabilities getDesiredCapabilities() {
-       /*
-        String scenarioName = scenarioRunContext.getProperty(ScenarioRunContext.ContextProperties.Common.SCENARIO_NAME);
-
-        HashMap<String, Object> scenarioOptions = new HashMap<String, Object>();
-        scenarioOptions.put("name", scenarioName);
-
-        capabilities.setCapability("scenarioOptions", scenarioOptions);
-
-        */
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setBrowserName(browserName);
         return capabilities;

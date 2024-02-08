@@ -25,7 +25,6 @@
 		<testng.version>7.7.1</testng.version>
 		<lombok.version>1.18.30</lombok.version>
 		<ashot.version>1.5.4</ashot.version>
-		<allure.version>2.25.0</allure.version>
 
 	</properties>
 	<dependencies>
@@ -105,27 +104,6 @@
 			<groupId>ru.yandex.qatools.ashot</groupId>
 			<artifactId>ashot</artifactId>
 			<version>${ashot.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>io.qameta.allure</groupId>
-			<artifactId>allure-java-commons</artifactId>
-			<version>${allure.version}</version>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>io.qameta.allure</groupId>
-					<artifactId>allure-cucumber7-jvm</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>io.qameta.allure</groupId>
-					<artifactId>allure-junit-platform</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>io.qameta.allure</groupId>
-					<artifactId>allure-junit5</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 
 	</dependencies>
