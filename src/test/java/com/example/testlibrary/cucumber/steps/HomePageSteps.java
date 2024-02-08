@@ -25,11 +25,7 @@ public class HomePageSteps {
     @Given("Go to Factorial Website")
     public void goToWebsite() {
         homePage.goToHomePage();
-    }
-
-    @When("Verify the factorial website is opened successfully")
-    public void verifyTheFactorialWebsiteIsOpenedSuccessfully() {
-        Assertions.assertTrue(homePage.isAt());
+        Assertions.assertTrue(homePage.isAt(), "The factorial website could not be opened");
     }
 
     @And("I enter {string} as an input to textbox on the Home Page")
@@ -45,23 +41,23 @@ public class HomePageSteps {
 
     @Then("Verify the factorial result should be shown on the Home Page")
     public void verifyTheFactorialResultShouldBeShownOnTheHomePAge() {
-        Assertions.assertTrue(homePage.resultIsShown());
+        Assertions.assertTrue(homePage.resultIsShown(), "The factorial result could not shown on the page.");
 
         String number = scenarioRunContext.getProperty(ScenarioRunContext.ContextProperties.Result.FACTORIAL_NUMBER);
 
         int factorialInt = Integer.parseInt(number);
-        String expectedFactorialResult = factorialInt > 170 ?  "Infinite" : BigIntegerMath.factorial(Integer.parseInt(number)).toString();
+        String expectedFactorialResult = factorialInt > 170 ?  "Infinity" : BigIntegerMath.factorial(Integer.parseInt(number)).toString();
 
         String actualNumber = homePage.getResultNumbers(3);
         String actualFactorialResult = homePage.getResultNumbers(5);
 
         if(actualFactorialResult.contains("e+")) {
-            actualFactorialResult.replace(".", "").substring(16);
-            expectedFactorialResult.substring(16);
+            actualFactorialResult = actualFactorialResult.replace(".", "").substring(0,16);
+            expectedFactorialResult = expectedFactorialResult.substring(0,16);
         }
 
-        Assertions.assertEquals(number,actualNumber);
-        Assertions.assertEquals(expectedFactorialResult,actualFactorialResult);
+        Assertions.assertEquals(number,actualNumber, "Input value is not correct on the result.");
+        Assertions.assertEquals(expectedFactorialResult,actualFactorialResult, "The result of factorial is not correct on the result.");
 
     }
 
