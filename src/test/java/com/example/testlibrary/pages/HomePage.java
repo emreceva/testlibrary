@@ -69,14 +69,7 @@ public class HomePage extends BasePage implements Home {
 
     public String getResultNumbers (int i) {
         browser.waitUntil(ExpectedConditions.visibilityOf(result));
-        /*List<Integer> numbers = Arrays.stream(browser.readText(result).split(" ")).
-                map(String::trim).
-                filter(d-> d.matches("\\d+")).
-                map(Integer::parseInt)
-                .collect(Collectors.toList());
-
-         */
-
+        
         List<String> numbers = Arrays.stream(browser.readText(result).split(" ")).
                 map(String::trim).toList();
         return numbers.get(i);
