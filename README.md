@@ -40,7 +40,7 @@ Build the project using Maven:
 mvn clean install
 
 Run the tests:
-mvn test
+mvn -Dtest="com.example.testlibrary.cucumber.CucumberSuiteRun" test
 
 Configuration
 

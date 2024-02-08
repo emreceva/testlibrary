@@ -39,6 +39,7 @@ public class HomePageSteps {
 
     @Then("Verify the factorial result should be shown on the Home Page")
     public void verifyTheFactorialResultShouldBeShownOnTheHomePAge() {
+
         Assertions.assertTrue(homePage.resultIsShown(), "The factorial result could not shown on the page.");
 
         String number = scenarioRunContext.getProperty(ScenarioRunContext.ContextProperties.Result.FACTORIAL_NUMBER);
