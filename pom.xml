@@ -25,7 +25,7 @@
 		<testng.version>7.7.1</testng.version>
 		<lombok.version>1.18.24</lombok.version>
 		<ashot.version>1.5.4</ashot.version>
-		<allure.version>2.24.0</allure.version>
+		<allure.version>2.25.0</allure.version>
 
 	</properties>
 	<dependencies>
@@ -109,9 +109,23 @@
 
 		<dependency>
 			<groupId>io.qameta.allure</groupId>
-			<artifactId>allure-testng</artifactId>
+			<artifactId>allure-java-commons</artifactId>
 			<version>${allure.version}</version>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>io.qameta.allure</groupId>
+					<artifactId>allure-cucumber7-jvm</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>io.qameta.allure</groupId>
+					<artifactId>allure-junit-platform</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>io.qameta.allure</groupId>
+					<artifactId>allure-junit5</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 	</dependencies>
@@ -120,7 +134,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-
 			</plugin>
 
 			<plugin>

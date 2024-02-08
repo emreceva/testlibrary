@@ -1,6 +1,6 @@
 package com.example.testlibrary.configuration;
 
-import com.example.testlibrary.annotations.BrowserBean;
+import com.example.testlibrary.annotations.BrowserScopeBean;
 import com.example.testlibrary.annotations.LazyConfiguration;
 import com.example.testlibrary.utils.browser.Browser;
 import com.example.testlibrary.utils.browser.BrowserUtils;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Primary;
 @LazyConfiguration
 public class BrowserConfig {
 
-    @BrowserBean
+    @BrowserScopeBean
     @ConditionalOnMissingBean
     @Primary
     public Browser browser(BrowserUtils browserUtils) {

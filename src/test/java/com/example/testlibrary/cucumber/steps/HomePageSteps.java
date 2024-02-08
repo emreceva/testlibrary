@@ -12,6 +12,8 @@ import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.math.BigInteger;
+
 public class HomePageSteps {
 
     @LazyAutowired
@@ -46,13 +48,20 @@ public class HomePageSteps {
         Assertions.assertTrue(homePage.resultIsShown());
 
         String number = scenarioRunContext.getProperty(ScenarioRunContext.ContextProperties.Result.FACTORIAL_NUMBER);
-        String expectedResult = BigIntegerMath.factorial(Integer.parseInt(number)).toString();
 
-        String actualNumber = homePage.getResultNumbers(0);
-        String actualResult = homePage.getResultNumbers(1);
+        int factorialInt = Integer.parseInt(number);
+        String expectedFactorialResult = factorialInt > 170 ?  "Infinite" : BigIntegerMath.factorial(Integer.parseInt(number)).toString();
+
+        String actualNumber = homePage.getResultNumbers(3);
+        String actualFactorialResult = homePage.getResultNumbers(5);
+
+        if(actualFactorialResult.contains("e+")) {
+            actualFactorialResult.replace(".", "").substring(16);
+            expectedFactorialResult.substring(16);
+        }
 
         Assertions.assertEquals(number,actualNumber);
-        Assertions.assertEquals(expectedResult,actualResult);
+        Assertions.assertEquals(expectedFactorialResult,actualFactorialResult);
 
     }
 

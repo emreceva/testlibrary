@@ -1,6 +1,6 @@
 Feature: Home Page Component
 
-  @TestCase-1
+  @Regression
   Scenario: Calculate Factorial Positive Number 1
     Given Go to Factorial Website
     When Verify the factorial website is opened successfully
@@ -8,7 +8,7 @@ Feature: Home Page Component
     And I click calculate button on the Home Page
     Then Verify the factorial result should be shown on the Home Page
 
-  @TestCase-2
+  @Regression
   Scenario: Calculate Factorial Positive Number 2
     Given Go to Factorial Website
     When Verify the factorial website is opened successfully
@@ -16,7 +16,15 @@ Feature: Home Page Component
     And I click calculate button on the Home Page
     Then Verify the factorial result should be shown on the Home Page
 
-  @TestCase-3
+  @Regression
+  Scenario: Calculate Factorial Positive Number - Big Number
+    Given Go to Factorial Website
+    When Verify the factorial website is opened successfully
+    And I enter "100" as an input to textbox on the Home Page
+    And I click calculate button on the Home Page
+    Then Verify the factorial result should be shown on the Home Page
+
+  @Regression
   Scenario: Calculate Factorial Zero
     Given Go to Factorial Website
     When Verify the factorial website is opened successfully
@@ -25,7 +33,7 @@ Feature: Home Page Component
     Then Verify the factorial result should be shown on the Home Page
 
 
-  @TestCase-4
+  @Regression
   Scenario: Calculate Factorial Negative
     Given Go to Factorial Website
     When Verify the factorial website is opened successfully
@@ -33,7 +41,7 @@ Feature: Home Page Component
     And I click calculate button on the Home Page
     Then Verify the factorial result should not be shown on the Home Page
 
-  @TestCase-5
+  @Regression
   Scenario: Calculate Factorial Non Digit
     Given Go to Factorial Website
     When Verify the factorial website is opened successfully

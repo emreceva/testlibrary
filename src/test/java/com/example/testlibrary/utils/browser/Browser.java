@@ -6,6 +6,8 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 
 public interface Browser {
 
+    boolean browserHasQuit();
+
     <T> void click(T elementAttr);
 
     WebDriver getWebDriver();

@@ -7,8 +7,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.beans.factory.annotation.Value;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @LazyComponent
@@ -65,12 +69,22 @@ public class HomePage extends BasePage implements Home {
 
     public String getResultNumbers (int i) {
         browser.waitUntil(ExpectedConditions.visibilityOf(result));
-        List<Integer> numbers = Arrays.stream(browser.readText(result).split(" ")).
+        /*List<Integer> numbers = Arrays.stream(browser.readText(result).split(" ")).
                 map(String::trim).
                 filter(d-> d.matches("\\d+")).
                 map(Integer::parseInt)
                 .collect(Collectors.toList());
 
-        return numbers.get(i).toString();
+         */
+
+        List<String> numbers = Arrays.stream(browser.readText(result).split(" ")).
+                map(String::trim).toList();
+        return numbers.get(i);
+    }
+
+    public String convertRegularToScientific(String regularNotation) {
+        BigDecimal number = new BigDecimal(regularNotation);
+        DecimalFormat scientificFormat = new DecimalFormat("0.###############e+", new DecimalFormatSymbols(Locale.ENGLISH));
+        return scientificFormat.format(number);
     }
 }

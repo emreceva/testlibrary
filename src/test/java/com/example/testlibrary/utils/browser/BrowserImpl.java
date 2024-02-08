@@ -4,6 +4,7 @@ import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
 import org.openqa.selenium.devtools.v85.headlessexperimental.model.ScreenshotParams;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -18,6 +19,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
@@ -48,6 +50,11 @@ public class BrowserImpl implements Browser{
                 .ignoring(NoSuchFieldException.class, StaleElementReferenceException.class);
     }
 
+
+    @Override
+    public boolean browserHasQuit() {
+        return Objects.isNull(((RemoteWebDriver) driver).getSessionId());
+    }
 
     @Override
     public <T> void click(T elementAttr) {
