@@ -100,6 +100,18 @@ public class BrowserImpl implements Browser{
     }
 
     @Override
+    public <T> T waitUntilFast(ExpectedCondition<T> expectedCondition) {
+        var savedWait = wait;
+        wait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(waitTimeOut))
+                .pollingEvery(Duration.ofMillis(100))
+                .ignoring(NoSuchFieldException.class);
+        T returnValue = wait.until(expectedCondition);
+        wait = savedWait;
+        return returnValue;
+    }
+
+    @Override
     public byte[] takeScreenShot() {
 
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;

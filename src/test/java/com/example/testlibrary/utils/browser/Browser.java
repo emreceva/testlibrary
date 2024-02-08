@@ -1,6 +1,6 @@
 package com.example.testlibrary.utils.browser;
 
-import org.openqa.selenium.SearchContext;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 
@@ -31,6 +31,8 @@ public interface Browser {
     void waitUrlToBe(String urlToBe);
 
     <T> T waitUntil(ExpectedCondition<T> expectedCondition);
+
+    <T> T waitUntilFast(ExpectedCondition<T> expectedCondition);
 
     byte[] takeScreenShot();
 
