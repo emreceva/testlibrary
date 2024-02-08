@@ -8,11 +8,9 @@ import com.google.common.math.BigIntegerMath;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.math.BigInteger;
 
 public class HomePageSteps {
 

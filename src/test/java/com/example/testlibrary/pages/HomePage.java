@@ -13,7 +13,6 @@ import java.text.DecimalFormatSymbols;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
-import java.util.stream.Collectors;
 
 @LazyComponent
 public class HomePage extends BasePage implements Home {
@@ -69,7 +68,7 @@ public class HomePage extends BasePage implements Home {
 
     public String getResultNumbers (int i) {
         browser.waitUntil(ExpectedConditions.visibilityOf(result));
-        
+
         List<String> numbers = Arrays.stream(browser.readText(result).split(" ")).
                 map(String::trim).toList();
         return numbers.get(i);
