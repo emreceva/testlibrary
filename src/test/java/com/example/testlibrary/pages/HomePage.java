@@ -75,10 +75,4 @@ public class HomePage extends BasePage implements Home {
                 map(String::trim).toList();
         return numbers.get(i);
     }
-
-    public String convertRegularToScientific(String regularNotation) {
-        BigDecimal number = new BigDecimal(regularNotation);
-        DecimalFormat scientificFormat = new DecimalFormat("0.###############e+", new DecimalFormatSymbols(Locale.ENGLISH));
-        return scientificFormat.format(number);
-    }
 }
