@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.2</version>
+		<version>3.3.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
@@ -25,6 +25,7 @@
 		<testng.version>7.7.1</testng.version>
 		<lombok.version>1.18.30</lombok.version>
 		<ashot.version>1.5.4</ashot.version>
+		<restassured.version>5.1.1</restassured.version>
 
 	</properties>
 	<dependencies>
@@ -104,6 +105,25 @@
 			<groupId>ru.yandex.qatools.ashot</groupId>
 			<artifactId>ashot</artifactId>
 			<version>${ashot.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>${restassured.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>2.4.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openapitools</groupId>
+			<artifactId>jackson-databind-nullable</artifactId>
+			<version>0.2.1</version>
 		</dependency>
 
 	</dependencies>

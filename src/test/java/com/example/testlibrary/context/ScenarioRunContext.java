@@ -39,5 +39,21 @@ public class ScenarioRunContext {
 
         }
 
+        public interface API {
+            String REQUEST_HEADERS = "REQUEST_HEADERS";
+
+            String RESPONSE_HEADERS = "RESPONSE_HEADERS";
+
+            String REQUEST = "REQUEST";
+
+            String RESPONSE = "RESPONSE";
+
+            String CURRENT_TEMPERATURE = "CURRENT_TEMPERATURE";
+        }
+
+        public interface Accuweather {
+            String CURRENT_TEMPERATURE = "CURRENT_TEMPERATURE";
+        }
+
     }
 }
