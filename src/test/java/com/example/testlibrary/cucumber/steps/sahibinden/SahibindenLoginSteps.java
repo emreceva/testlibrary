@@ -18,4 +18,9 @@ public class SahibindenLoginSteps {
         String password = user.getPassword();
         sahibindenLogin.signIn(username, password);
     }
+
+    @When("I sign in with {string} and {string} on the Sahibinden Login Page")
+    public void iSignInWithParameters(String username, String password) {
+        sahibindenLogin.signIn(username, password);
+    }
 }

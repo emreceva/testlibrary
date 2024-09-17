@@ -48,11 +48,14 @@ public class ScenarioRunContext {
 
             String RESPONSE = "RESPONSE";
 
-            String CURRENT_TEMPERATURE = "CURRENT_TEMPERATURE";
         }
 
         public interface Accuweather {
             String CURRENT_TEMPERATURE = "CURRENT_TEMPERATURE";
+        }
+
+        public interface City {
+            String CITY_KEY = "CITY_KEY";
         }
 
     }

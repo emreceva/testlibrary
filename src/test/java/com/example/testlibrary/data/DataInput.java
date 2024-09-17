@@ -1,5 +1,6 @@
 package com.example.testlibrary.data;
 
+import com.example.testlibrary.enums.CategoryMenuItem;
 import io.cucumber.java.ParameterType;
 
 public class DataInput {
@@ -9,5 +10,10 @@ public class DataInput {
     @ParameterType(value = ENUM_REGEX, name = "userType")
     public UserType userType(String userType) {
         return UserType.valueOf(userType.toUpperCase());
+    }
+
+    @ParameterType(value = ENUM_REGEX, name = "categoryMenuItem")
+    public CategoryMenuItem categoryMenuItem(String categoryMenuItem) {
+        return CategoryMenuItem.valueOf(categoryMenuItem);
     }
 }

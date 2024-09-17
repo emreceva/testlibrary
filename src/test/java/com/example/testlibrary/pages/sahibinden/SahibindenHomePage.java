@@ -3,6 +3,7 @@ package com.example.testlibrary.pages.sahibinden;
 import com.example.testlibrary.annotations.LazyComponent;
 import com.example.testlibrary.interfaces.sahibinden.SahibindenHome;
 import com.example.testlibrary.pages.BasePage;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,15 +21,23 @@ public class SahibindenHomePage extends BasePage implements SahibindenHome {
     @FindBy(id = "secure-login")
     private WebElement signInButton;
 
-    public SahibindenHome goToHomePage() {
+    @FindBy(css = "[data-target ='#user-login-tooltip']")
+    private WebElement usernameLogin;
+
+    public SahibindenHomePage goToHomePage() {
         browser.get(baseUrl);
         return this;
     }
 
     @Override
-    public SahibindenHome clickSignInButton() {
+    public SahibindenHomePage clickSignInButton() {
         browser.click(signInButton);
         return this;
+    }
+
+    @Override
+    public boolean verifyUserLogin() {
+        return browser.isDisplayed(usernameLogin);
     }
 
 

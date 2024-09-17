@@ -26,7 +26,7 @@ public class SahibindenLoginPage extends BasePage implements SahibindenLogin {
     }
 
     @Override
-    public SahibindenLogin signIn(String username, String password) {
+    public SahibindenLoginPage signIn(String username, String password) {
         browser.sendKeys(this.username, username);
         browser.sendKeys(this.password, password);
         browser.click(submitButton);

@@ -1,5 +1,8 @@
 package com.example.testlibrary.data;
 
+
+import lombok.Getter;
+
 public enum UserType {
 
     VALID_USER() {

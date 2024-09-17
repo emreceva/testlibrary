@@ -7,4 +7,6 @@ public interface SahibindenHome {
     SahibindenHome goToHomePage();
 
     SahibindenHome clickSignInButton();
+
+    boolean verifyUserLogin();
 }
