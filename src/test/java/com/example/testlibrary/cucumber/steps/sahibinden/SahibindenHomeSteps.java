@@ -33,8 +33,9 @@ public class SahibindenHomeSteps {
         Assertions.assertTrue(sahibindenHome.verifyUserLogin(), "Sahibinden user could not be login successfully.");
     }
 
-    @When("I click {categoryMenuItem} menu item on the Sahibinden Home Page")
-    public void iClickMenuItemOnTheSahibindenHomePage(CategoryMenuItem categoryMenuItem) {
+    @When("I click {string} menu item on the Sahibinden Home Page")
+    public void iClickMenuItemOnTheSahibindenHomePage(String menuItem) {
+        CategoryMenuItem categoryMenuItem = CategoryMenuItem.valueOf(menuItem.toUpperCase());
         sahibindenCategoryMenu.clickItemOnCategoryMenu(categoryMenuItem);
     }
 }

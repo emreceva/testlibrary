@@ -1,11 +1,14 @@
 package com.example.testlibrary.utils.browser;
 
 import com.example.testlibrary.context.ScenarioRunContext;
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
 
 
 @Component
@@ -35,7 +38,11 @@ public class CapabilityUtils {
                 .addArguments("disable-infobars")
                 .addArguments("--disable-extensions")
                 .addArguments("--disable-gpu")
-                .addArguments("--disable-dev-shm-usage");
+                .addArguments("--disable-dev-shm-usage")
+                .addArguments("disable-popup-blocking");
+
+        options.setExperimentalOption("excludeSwitches",
+                Arrays.asList("disable-popup-blocking"));
 
         options.setCapability("acceptInsecureCerts", true);
         loggingUtils.setLoggingPrefs(options);

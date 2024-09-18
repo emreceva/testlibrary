@@ -22,7 +22,9 @@ public class SahibindenCategoryMenuComponent extends BasePage implements Sahibin
     public SahibindenCategoryMenu clickItemOnCategoryMenu(CategoryMenuItem categoryMenuItem) {
         switch (categoryMenuItem) {
             case OTO360 -> browser.click(oto360);
+
+            default -> throw new EnumConstantNotPresentException(CategoryMenuItem.class, categoryMenuItem.name());
         }
-        throw  new EnumConstantNotPresentException(CategoryMenuItem.class, categoryMenuItem.name());
+        return this;
     }
 }

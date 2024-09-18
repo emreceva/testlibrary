@@ -1,6 +1,7 @@
 package com.example.testlibrary.data;
 
 import com.example.testlibrary.enums.CategoryMenuItem;
+import com.example.testlibrary.enums.HeaderItemAuto360;
 import io.cucumber.java.ParameterType;
 
 public class DataInput {
@@ -15,5 +16,10 @@ public class DataInput {
     @ParameterType(value = ENUM_REGEX, name = "categoryMenuItem")
     public CategoryMenuItem categoryMenuItem(String categoryMenuItem) {
         return CategoryMenuItem.valueOf(categoryMenuItem);
+    }
+
+    @ParameterType(value = ENUM_REGEX, name = "headerMenuAuto360")
+    public HeaderItemAuto360 headerMenuItemAuto360(String headerMenuAuto360) {
+        return HeaderItemAuto360.valueOf(headerMenuAuto360);
     }
 }

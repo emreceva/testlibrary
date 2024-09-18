@@ -17,6 +17,7 @@ import javax.imageio.ImageIO;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
@@ -127,6 +128,29 @@ public class BrowserImpl implements Browser{
             log.info(exception.getMessage());
         }
         return byt.toByteArray();
+    }
+
+    @Override
+    public WebElement findElement(SearchContext context, By by) {
+        return context.findElement(by);
+    }
+
+    @Override
+    public List<WebElement> findElements(SearchContext context, By by) {
+        return context.findElements(by);
+    }
+
+    @Override
+    public Object executeScript(String script, Object... args) {
+        Object obj = null;
+
+        try {
+            obj = javascriptExecutor.executeScript(script, args);
+        }catch (Exception e) {
+            log.error(e.getMessage());
+        }
+
+        return obj;
     }
 
     @Override
