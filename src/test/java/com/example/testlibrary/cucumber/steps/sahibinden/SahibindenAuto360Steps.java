@@ -9,6 +9,7 @@ import com.example.testlibrary.enums.MenuItemAuto360;
 import com.example.testlibrary.interfaces.sahibinden.SahibindenHeaderAuto360;
 import com.example.testlibrary.interfaces.sahibinden.SahibindenVehiclePriceEvaluation;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 
@@ -53,5 +54,10 @@ public class SahibindenAuto360Steps {
     @And("I click evaluate another vehicle button on the Sahibinden Vehicle Evaluation Page")
     public void iClickEvaluateAnotherVehicleButton() {
         vehiclePriceEvaluation.clickEvaluateAnotherVehicleButton();
+    }
+
+    @Given("I go to the Sahibinden Auto360 Page")
+    public void iGoToTheSahibindenAutoPage() {
+        vehiclePriceEvaluation.goToVehicleEvaluationPage();
     }
 }

@@ -21,7 +21,7 @@ public class SahibindenHeaderAuto360Page extends BasePage implements SahibindenH
     @FindBy(xpath = "//*[@class= 'auto-360-menu']/li/following::ol/li/a")
     private List<WebElement> headerMenuItems;
 
-    private String headerMenuItemList = "//*[@class= 'auto-360-menu']/li/./following::ol/li/a[text()= '%s']";
+    private String headerMenuItemList = "//*[@class= 'auto-360-menu']/li/./following::ol/li/a[normalize-space(text()) = '%s']";
 
     private String headerMenuList = "//*[@class= 'auto-360-menu']/li/a[text()= '%s']";
 
@@ -32,7 +32,8 @@ public class SahibindenHeaderAuto360Page extends BasePage implements SahibindenH
 
     @Override
     public SahibindenHeaderAuto360 clickItemOnHeader(HeaderItemAuto360 menuItemAuto360) {
-        browser.click(By.xpath(String.format(headerMenuList, menuItemAuto360.getText())));
+        WebElement itemElement = browser.findElement(By.xpath(String.format(headerMenuList, menuItemAuto360.getText())));
+        browser.hoverAndClick(itemElement);
         return this;
     }
 

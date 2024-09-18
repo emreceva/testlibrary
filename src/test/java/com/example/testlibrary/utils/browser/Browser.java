@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 
+import java.time.Duration;
 import java.util.List;
 
 public interface Browser {
@@ -46,5 +47,12 @@ public interface Browser {
     List<WebElement> findElements(SearchContext context, By by);
 
     Object executeScript(String script, Object... args);
+
+    void hoverAndClick(WebElement element);
+
+    WebElement findElement(By by);
+
+    List<WebElement> findElements(By by);
+
 
 }

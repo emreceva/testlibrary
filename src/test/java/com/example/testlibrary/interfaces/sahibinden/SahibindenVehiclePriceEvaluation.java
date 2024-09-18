@@ -12,5 +12,8 @@ public interface SahibindenVehiclePriceEvaluation {
 
     SahibindenVehiclePriceEvaluation clickEvaluateAnotherVehicleButton();
 
+    SahibindenVehiclePriceEvaluation goToVehicleEvaluationPage();
+
     SahibindenVehiclePriceEvaluation selectCarOnContainer(CarType carType);
+
 }

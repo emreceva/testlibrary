@@ -48,7 +48,7 @@ public class BrowserUtils {
         driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(scriptTimeout));
     }
 
-    private void setImplicitlyWaitTimeout(WebDriver driver) {
+    protected void setImplicitlyWaitTimeout(WebDriver driver) {
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(implicitlyWaitTimeout));
     }
 

@@ -7,12 +7,16 @@ import com.example.testlibrary.interfaces.sahibinden.SahibindenVehiclePriceEvalu
 import com.example.testlibrary.pages.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.List;
 
 
 @LazyComponent
 public class SahibindenVehiclePriceEvaluationPage extends BasePage implements SahibindenVehiclePriceEvaluation {
+
+    @Value("${web.sahibinden.base.url}")
+    private String baseUrl;
 
     @FindBy(id = "evaluateVehiclePrice")
     private WebElement vehicleEvaluationButton;
@@ -31,6 +35,8 @@ public class SahibindenVehiclePriceEvaluationPage extends BasePage implements Sa
 
     @FindBy(css = ".evaluate-another-vehicle")
     private WebElement evaluateAnotherVehicleButton;
+
+
 
 
     @Override
@@ -54,6 +60,12 @@ public class SahibindenVehiclePriceEvaluationPage extends BasePage implements Sa
     @Override
     public SahibindenVehiclePriceEvaluationPage clickEvaluateAnotherVehicleButton() {
         browser.click(evaluateAnotherVehicleButton);
+        return this;
+    }
+
+    @Override
+    public SahibindenVehiclePriceEvaluation goToVehicleEvaluationPage() {
+        browser.get(baseUrl + "/oto360/arac-degerleme/satarken");
         return this;
     }
 

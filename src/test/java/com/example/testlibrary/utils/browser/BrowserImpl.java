@@ -3,11 +3,13 @@ package com.example.testlibrary.utils.browser;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
@@ -30,12 +32,18 @@ public class BrowserImpl implements Browser{
 
     private final JavascriptExecutor javascriptExecutor;
 
+    private final Actions actions;
+
+    @Autowired
+    BrowserUtils browserUtils;
+
     @Value("${web.wait.timeout}")
     private int waitTimeOut;
 
     public BrowserImpl(WebDriver driver) {
         this.driver = driver;
         this.javascriptExecutor = (JavascriptExecutor) driver;
+        this.actions = new Actions(driver);
     }
 
     @PostConstruct
@@ -151,6 +159,24 @@ public class BrowserImpl implements Browser{
         }
 
         return obj;
+    }
+
+    @Override
+    public void hoverAndClick(WebElement element) {
+        actions.moveToElement(element)
+                .click()
+                .build()
+                .perform();
+    }
+
+    @Override
+    public WebElement findElement(By by) {
+        return driver.findElement(by);
+    }
+
+    @Override
+    public List<WebElement> findElements(By by) {
+        return driver.findElements(by);
     }
 
     @Override
