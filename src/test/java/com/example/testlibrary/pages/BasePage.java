@@ -4,6 +4,8 @@ package com.example.testlibrary.pages;
 import com.example.testlibrary.annotations.LazyAutowired;
 import com.example.testlibrary.context.ScenarioRunContext;
 import com.example.testlibrary.utils.browser.Browser;
+import io.selenium.utils.ElementContextLocatorFactory;
+import io.selenium.utils.FieldContextDecorator;
 import jakarta.annotation.PostConstruct;
 import org.openqa.selenium.support.PageFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +28,7 @@ public abstract class BasePage {
 
     @PostConstruct
     private void init() {
-        PageFactory.initElements(browser.getWebDriver(), this);
+        PageFactory.initElements(new FieldContextDecorator(new ElementContextLocatorFactory(browser.getWebDriver())), this);
     }
 
     public abstract boolean isAt();
