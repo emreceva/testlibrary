@@ -70,8 +70,15 @@
     web.pageLoad.Timeout=40
     web.wait.timeout=5
     web.script.timeout=15
-    application.url=https://qa-test.pensa.app/
-  </pre>
+    dataservice.accuweather.base.url=http://dataservice.accuweather.com
+    web.accuweather.base.url=https://www.accuweather.com/
+    web.sahibinden.base.url=https://www.sahibinden.com/
+    emulator.mode=false
+    remote.mode=false
+    remote.driver=null
+    accuweather.api.token=gDZ40wELJLcPg1j3XmffdzB2Y8vz3z6e
+
+</pre>
 
 <h2>Writing Tests</h2>
   <p>The test scenarios and test cases are written using Cucumber and Gherkin syntax.</p>
