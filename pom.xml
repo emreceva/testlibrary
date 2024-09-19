@@ -26,6 +26,7 @@
 		<lombok.version>1.18.30</lombok.version>
 		<ashot.version>1.5.4</ashot.version>
 		<restassured.version>5.1.1</restassured.version>
+		<seleniumJUtils.version>1.24</seleniumJUtils.version>
 
 	</properties>
 	<dependencies>
@@ -126,6 +127,11 @@
 			<version>0.2.1</version>
 		</dependency>
 
+		<dependency>
+			<groupId>io.github.fslev</groupId>
+			<artifactId>selenium-jutils</artifactId>
+			<version>${seleniumJUtils.version}</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
