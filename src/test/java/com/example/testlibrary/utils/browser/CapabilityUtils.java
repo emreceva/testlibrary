@@ -23,6 +23,9 @@ public class CapabilityUtils {
     @Autowired
     private ScenarioRunContext scenarioRunContext;
 
+    @Autowired
+    private EmulationUtils emulationUtils;
+
     private DesiredCapabilities getDesiredCapabilities() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setBrowserName(browserName);
@@ -32,7 +35,6 @@ public class CapabilityUtils {
     public ChromeOptions getChromeOptions() {
         ChromeOptions options = new ChromeOptions();
 
-        // Create ChromeOptions
         options.addArguments("--remote-allow-origins=*")
                 .addArguments("--no-sandbox")
                 .addArguments("disable-infobars")
@@ -45,6 +47,7 @@ public class CapabilityUtils {
                 Arrays.asList("disable-popup-blocking"));
 
         options.setCapability("acceptInsecureCerts", true);
+        emulationUtils.setMobileEmulation(options);
         loggingUtils.setLoggingPrefs(options);
 
         return options.merge(getDesiredCapabilities());

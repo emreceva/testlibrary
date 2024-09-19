@@ -1,15 +1,23 @@
 package com.example.testlibrary.utils.browser;
 
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
 import java.time.Duration;
 
 
 @Component
+@Slf4j
 public class BrowserUtils {
 
     @Value ("${browser}")
@@ -24,13 +32,36 @@ public class BrowserUtils {
     @Value("${web.script.timeout}")
     private long scriptTimeout;
 
+    @Value("${remote.mode}")
+    private boolean isRemoteMode;
+
+    @Value("${remote.driver}")
+    private String remoteDriver;
+
     @Autowired
     private CapabilityUtils capabilityUtils;
 
     public synchronized Browser doCreateBrowser() {
-        WebDriver driver = createWebDriver();
+        WebDriver driver = createDriver();
         setups(driver);
         return new BrowserImpl(driver);
+    }
+
+    private WebDriver createDriver() {
+        return isRemoteMode ? createRemoteDriver() : createLocalDriver();
+    }
+
+    private WebDriver createRemoteDriver() {
+        try {
+            Assertions.assertTrue(StringUtils.isNoneBlank(remoteDriver));
+            URL remoteUrl = URI.create(remoteDriver).toURL();
+
+            return new RemoteWebDriver(remoteUrl, capabilityUtils.getChromeOptions(), false);
+        }catch (MalformedURLException e) {
+            log.error(e.getMessage());
+        }
+        throw new RuntimeException("Remote WebDriver Instance could not be created!");
+
     }
 
     private void setups(WebDriver driver) {
@@ -50,10 +81,6 @@ public class BrowserUtils {
 
     protected void setImplicitlyWaitTimeout(WebDriver driver) {
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(implicitlyWaitTimeout));
-    }
-
-    private WebDriver createWebDriver() {
-        return createLocalDriver();
     }
 
     private WebDriver createLocalDriver() {

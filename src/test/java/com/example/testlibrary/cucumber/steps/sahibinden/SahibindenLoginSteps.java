@@ -4,6 +4,7 @@ import com.example.testlibrary.annotations.LazyAutowired;
 import com.example.testlibrary.data.User;
 import com.example.testlibrary.data.UserType;
 import com.example.testlibrary.interfaces.sahibinden.SahibindenLogin;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class SahibindenLoginSteps {
@@ -23,4 +24,5 @@ public class SahibindenLoginSteps {
     public void iSignInWithParameters(String username, String password) {
         sahibindenLogin.signIn(username, password);
     }
+
 }

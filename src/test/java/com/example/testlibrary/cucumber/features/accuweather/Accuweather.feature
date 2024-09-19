@@ -1,5 +1,6 @@
 Feature: Accuweather
 
+  @Test
   Scenario: Comparison Current Temperature Ui And Api
     Given I get city location key from Accuweather Location Api Request
     And I get city current temperature from Accuweather Current Conditions Api Request
